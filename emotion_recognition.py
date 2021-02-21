@@ -9,13 +9,6 @@ from keras.preprocessing.image import img_to_array
 from keras.models import load_model
 
 
-subprocess.call('!if not exist "./files" mkdir files', shell=True)
-# Download Face detection XML 
-subprocess.call('!curl -L -o ./files/haarcascade_frontalface_default.xml https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml', shell=True)
-# Download emotion trained data
-subprocess.call('!curl -L -o ./files/emotion_model.hdf5 https://mechasolution.vn/source/blog/AI-tutorial/Emotion_Recognition/emotion_model.hdf5', shell=True)
-
-
 # Face detection XML load and trained model loading
 face_detection = cv2.CascadeClassifier('files/haarcascade_frontalface_default.xml')
 emotion_classifier = load_model('files/emotion_model.hdf5', compile=False)
